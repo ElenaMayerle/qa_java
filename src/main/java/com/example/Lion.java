@@ -6,7 +6,7 @@ public class Lion {
 
     boolean hasMane;
 
-    public Lion(String sex) throws Exception {
+    /*public Lion(String sex) throws Exception {
         if ("Самец".equals(sex)) {
             hasMane = true;
         } else if ("Самка".equals(sex)) {
@@ -16,7 +16,7 @@ public class Lion {
         }
     }
 
-    Feline feline = new Feline();
+    /*Feline feline = new Feline();
 
     public int getKittens() {
         return feline.getKittens();
@@ -28,5 +28,29 @@ public class Lion {
 
     public List<String> getFood() throws Exception {
         return feline.getFood("Хищник");
+    }*/
+    public Lion(String sex, Feline feline) throws Exception {
+        this.predator=feline;
+        if ("Самец".equals(sex)) {
+            hasMane = true;
+        } else if ("Самка".equals(sex)) {
+            hasMane = false;
+        } else {
+            throw new Exception("Используйте допустимые значения пола животного - самец или самка");
+        }
+
+    }
+    private final Predator predator;
+
+    public int getKittens() {
+        return predator.getKittens();
+    }
+
+    public boolean doesHaveMane() {
+        return hasMane;
+    }
+
+    public List<String> getFood() throws Exception {
+        return predator.getFood("Хищник");
     }
 }
